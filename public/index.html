@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>RPG Webgame</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <!-- full‐screen canvas -->
+  <canvas id="gameCanvas"></canvas>
+
+  <!-- drops panel bottom‐right -->
+  <div id="dropsPanel">
+    <h3>Last Drops</h3>
+    <ul id="dropList"></ul>
+  </div>
+
+  <!-- optional logout button -->
+  <button id="logout" style="
+      position:fixed; top:20px; right:20px;
+      padding:8px 12px; z-index:10;
+    ">
+    Logout
+  </button>
+
+  <script>
+    // Before starting game, ensure we have a JWT
+    const token = localStorage.getItem('jwt');
+    if (!token) {
+      window.location.href = 'auth.html';
+      throw new Error('No JWT, redirecting to auth');
+    }
+    // stub in for your main.js code to pick up the token
+    window.jwt = token;
+  </script>
+</body>
+</html>

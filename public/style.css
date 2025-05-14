@@ -1,0 +1,50 @@
+/* fill the viewport */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+  background: #000;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+/* full-screen canvas */
+#gameCanvas {
+  display: block;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+}
+
+/* drops panel fixed bottom-right */
+#dropsPanel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 220px;
+  max-height: 300px;
+  background: rgba(0,0,0,0.7);
+  border: 2px solid #fff;
+  padding: 8px;
+  box-sizing: border-box;
+  z-index: 5;
+  overflow: hidden;
+}
+#dropsPanel h3 {
+  margin: 0 0 4px;
+  font: 14px "Press Start 2P", monospace;
+  color: #fff;
+}
+#dropList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-y: auto;
+  max-height: 240px;
+}
+#dropList li {
+  font: 12px "Press Start 2P", monospace;
+  margin-bottom: 4px;
+}

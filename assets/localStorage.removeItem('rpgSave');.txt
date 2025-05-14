@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Idle Canvas Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { margin: 0; overflow: hidden; }
+    canvas#gameCanvas {
+      display: block;
+      background: #fafafa;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas"></canvas>
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+Reset ga,e
+// Call this to wipe your save and reset everything to defaults
+function resetGame() {
+  // 1) Clear out your saved data
+  localStorage.removeItem('rpgSave');
+
+  // 2) Reset all your globals back to their starting values
+  stage       = 1;
+  playerLevel = 1;
+  xp          = 0;
+  xpToLevel   = 2;
+  points      = 0;
+  gold        = 0;
+  crystals    = 0;
+  kills       = 0;
+  powerBalls  = 0;
+
+  // 3) Reset the player object
+  Object.assign(player, {
+    x:      canvas.width/2 - player.size/2,
+    y:      canvas.height/2 - player.size/2,
+    attack: 12,
+    def:    5,
+    maxHp:  100,
+    hp:     100,
+    regen:  1,
+    name:   'Chronicles',
+    rank:   RANKS[0]
+  });
+
+  // 4) Clear out equipment and costs
+  for (let t of types) equipment[t] = null;
+  Object.assign(statCosts, { attack:5, hp:8, def:6, regen:10 });
+
+  // 5) Re‐spawn the first wave
+  spawnMonsters();
+
+  // 6) Force‐save the cleared state
+  saveGame();
+}
+
